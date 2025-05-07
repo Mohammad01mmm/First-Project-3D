@@ -1,8 +1,12 @@
-# First Project 3D 🚗
+<p align="center">
+  <a href="#first_3D_fa">🇮🇷 فارسی</a> | <a href="#first_3D_en">🇺🇸 English</a>
+</p>
+
+---
+
+<h1 id="first_3D_fa">First Project 3D 🚗 (فارسی)</h1>
 
 این پروژه اولین پروژه سه‌بعدی من با استفاده از کتابخانه **Three.js** است که مدل سه‌بعدی **BMW i8** را نمایش می‌دهد و از **RGBELoader** برای بارگذاری تصاویر HDR بهره می‌برد. این پروژه شامل یک مدل سه‌بعدی، نورپردازی، کنترل‌های دوربین و بارگذاری یک محیط HDR است.
-
-**[English Version](./README-en.md)** | **[نسخه فارسی](./README-fa.md)**
 
 ## پیش‌نیازها 📦
 
@@ -156,11 +160,9 @@ animate();
 
 ---
 
-# First Project 3D 🚗
+<h1 id="first_3D_en">First Project 3D 🚗 (English)</h1>
 
 This is my first 3D project using the **Three.js** library that displays the **BMW i8** 3D model and utilizes the **RGBELoader** to load HDR images. This project includes a 3D model, lighting, camera controls, and the loading of an HDR environment.
-
-**[نسخه فارسی](./README-fa.md)** | **[English Version](./README-en.md)**
 
 ## Prerequisites 📦
 
