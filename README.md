@@ -7,9 +7,7 @@
 ## پیش‌نمایش 👀
 
 <a id="preview"></a>
-<p align="center">
-  <img src="preview.gif" alt="Preview" width="600">
-</p>
+![اسکرین‌شات پروژه](./assets/preview.gif)
 
 <h1 id="first_3D_fa">First Project 3D 🚗 (فارسی)</h1>
 
