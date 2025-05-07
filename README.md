@@ -1,0 +1,153 @@
+# First Project 3D 🚗
+
+این پروژه اولین پروژه سه‌بعدی من با استفاده از کتابخانه **Three.js** است که مدل سه‌بعدی **BMW i8** را نمایش می‌دهد و از **RGBELoader** برای بارگذاری تصاویر HDR بهره می‌برد. این پروژه شامل یک مدل سه‌بعدی، نورپردازی، کنترل‌های دوربین و بارگذاری یک محیط HDR است.
+
+## پیش‌نیازها 📦
+
+برای اجرای پروژه به این پیش‌نیازها نیاز دارید:
+
+* **Node.js** (نسخه 14 یا بالاتر)
+* **NPM** (همراه Node.js نصب می‌شود)
+* **Git**
+
+## مراحل نصب و راه‌اندازی 🛠️
+
+برای شروع مراحل زیر را دنبال کنید:
+
+1. **مخزن پروژه را کلون کنید:**
+
+```bash
+git clone https://github.com/Mohammad01mmm/First-Project-3D.git
+cd First-Project-3D
+```
+
+2. **وابستگی‌ها را نصب کنید:**
+
+```bash
+npm install
+```
+
+3. **پروژه را اجرا کنید:**
+
+```bash
+npm run dev
+```
+
+4. **برای ساخت نسخه نهایی:**
+
+```bash
+npm run build
+```
+
+## ساختار پروژه 🗂️
+
+```
+/First-Project-3D
+├── /models
+│   ├── 2019_lbworks_bmw_i8_ver.2.glb  # مدل سه‌بعدی BMW i8
+│   └── rural_asphalt_road_1k.hdr      # تصویر HDR جاده
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── script.js
+```
+
+## نمایش مدل سه‌بعدی BMW 🚙
+
+در این پروژه، مدل سه‌بعدی **BMW i8** به‌صورت کامل بارگذاری و نمایش داده می‌شود. همچنین، از **RGBELoader** برای بارگذاری تصاویر HDR به‌منظور شبیه‌سازی نور و محیط استفاده شده است.
+
+### کد اصلی برای بارگذاری مدل سه‌بعدی و HDR:
+
+```javascript
+import * as THREE from 'three';
+import { WebGLRenderer } from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+// انتخاب Canvas
+const canvas = document.querySelector('canvas.threeD');
+
+// تنظیمات صفحه نمایش
+const sizes = {
+  width: 800,
+  height: 600,
+};
+
+// ساخت Scene و دوربین
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf0f0f0);
+
+// اضافه کردن GridHelper و AxesHelper
+const gridhelper = new THREE.GridHelper(10, 10);
+scene.add(gridhelper);
+const axeshelper = new THREE.AxesHelper(7);
+scene.add(axeshelper);
+
+// بارگذاری مدل سه‌بعدی BMW i8
+const gltfloader = new GLTFLoader();
+gltfloader.load(
+  'models/2019_lbworks_bmw_i8_ver.2.glb',
+  (gltf) => {
+    gltf.scene.scale.set(20, 20, 20);
+    scene.add(gltf.scene);
+  },
+  (xhr) => {
+    console.log(`Loading Progress: ${(xhr.loaded / xhr.total) * 100}%`);
+  },
+  (error) => {
+    console.log('An error occurred while Loading the model:', error);
+  }
+);
+
+// اضافه کردن نورپردازی
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+scene.add(directionalLight);
+
+// تنظیمات دوربین
+const camera = new THREE.PerspectiveCamera(70, sizes.width / sizes.height, 0.1, 2000);
+camera.position.set(1, 0.5, 0);
+scene.add(camera);
+
+// بارگذاری HDR
+const hdrLoader = new RGBELoader();
+hdrLoader.load('models/rural_asphalt_road_1k.hdr', (hdr) => {
+  hdr.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = hdr;
+});
+
+// تنظیمات رندر
+const renderer = new WebGLRenderer({ canvas: canvas, antialias: true });
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.autoRotate = true;
+
+// تنظیمات سایز صفحه نمایش
+renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+// انیمیشن
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+animate();
+```
+
+## ویژگی‌ها ⚙️
+
+* نمایش مدل سه‌بعدی **BMW i8** با استفاده از **GLTFLoader**.
+* بارگذاری و نمایش محیط HDR با استفاده از **RGBELoader**.
+* استفاده از **OrbitControls** برای چرخش دوربین و مشاهده مدل از زوایای مختلف.
+* بارگذاری صحیح مدل و پیشرفت بارگذاری مدل در کنسول.
+
+## نویسنده ✍️
+
+* **نام:** Mohammad
+* **ایمیل:** [mohammadamirahmad01@gmail.com](mailto:mohammadamirahmad01@gmail.com)
+* **گیت‌هاب:** [Mohammad01mmm](https://github.com/Mohammad01mmm)
