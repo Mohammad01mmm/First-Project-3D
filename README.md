@@ -1,8 +1,15 @@
 <p align="center">
-  <a href="#first_3D_fa">🇮🇷 فارسی</a> | <a href="#first_3D_en">🇺🇸 English</a>
+  <a href="#first_3D_fa">🇮🇷 فارسی</a> | <a href="#first_3D_en">🇺🇸 English</a> | <a href="#preview"> Preview </a>
 </p>
 
 ---
+
+## پیش‌نمایش 👀
+
+<a id="preview"></a>
+<p align="center">
+  <img src="preview.gif" alt="Preview" width="600">
+</p>
 
 <h1 id="first_3D_fa">First Project 3D 🚗 (فارسی)</h1>
 
@@ -313,8 +320,12 @@ animate();
 - Use of **OrbitControls** for camera rotation and model viewing.
 - Proper model loading and progress tracking in the console.
 
+
+
 ## Author ✍️
 
 - **Name:** Mohammad
 - **Email:** [mohammadamirahmad01@gmail.com](mailto:mohammadamirahmad01@gmail.com)
 - **GitHub:** [Mohammad01mmm](https://github.com/Mohammad01mmm)
+
+
